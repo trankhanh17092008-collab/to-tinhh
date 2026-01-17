@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tớ thích cậu 💗</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e0, #fff0f6);
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      max-width: 420px;
+      z-index: 2;
+    }
+    h1 { color: #ff4d6d; }
+    p {
+      font-size: 18px;
+      color: #444;
+      line-height: 1.7;
+    }
+    button {
+      margin: 12px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+    .yes:hover { transform: scale(1.08); }
+    .no {
+      background: #adb5bd;
+      color: white;
+      position: absolute;
+    }
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 20px;
+      animation: floatUp 4s linear forwards;
+      color: #ff4d6d;
+      z-index: 1;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>💗 Heluu 💗</h1>
+  <p>
+    heluu tớ là Mit đayyy,<br>
+    tớ chỉ muốn nói là<br>
+    <b>tớ yêu cậu nhiều lắm lun aaaa 💕</b>
+  </p>
+  <button class="yes" onclick="yesClick()">Tớ cũng yêu cậu 💖</button>
+  <button class="no" onmouseover="moveNo()">Hônggg 💔</button>
+</div>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1f1c8b2e0c.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function yesClick() {
+    document.getElementById("music").play();
+    document.body.innerHTML = `
+      <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        background:linear-gradient(135deg,#ffccd5,#fff0f3);
+        font-family:'Segoe UI',sans-serif;
+        text-align:center;">
+        <h1 style="color:#ff4d6d;">
+          ngại thíii >< <br>
+          mai mình đăng kí kết hôn nha 💍💗
+        </h1>
+      </div>
+    `;
+  }
+
+  function moveNo() {
+    const btn = document.querySelector('.no');
+    btn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+    btn.style.top  = Math.random() * (window.innerHeight - 50) + 'px';
+  }
+
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 10 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }, 500);
+</script>
+
+</body>
+</html>
